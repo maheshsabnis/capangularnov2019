@@ -1,0 +1,65 @@
+<!-- bind the FormGroup to form tag and then use formControiName to bind with each Editable UI element also use (ngSubmit) event binding to submit form  -->
+<h2>The Angular Forms Validation with Reactive Forms</h2>
+
+<div class="container">
+    <form [formGroup]="frmProduct" name="frmProduct" (ngSubmit)="save()">
+        <div class="form-group">
+            <label for="ProductRowId">ProductRowId</label>
+            <input type="text" formControlName="ProductRowId" name="ProductRowId" class="form-control">
+            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductRowId.dirty && !frmProduct.controls.ProductRowId.valid">
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.required">Value is must</p>
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.pattern">Value must be numeric</p>
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.minlength">Value must be 2 digits min</p>
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.maxlength">Valud must be 6 digits max</p>
+                <p *ngIf="!frmProduct.controls.ProductRowId.valid">Value must be even</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ProductId">ProductId</label>
+            <input type="text" formControlName="ProductId" name="ProductId" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ProductName">ProductName</label>
+            <input type="text" formControlName="ProductName" name="ProductName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Manufacturer">Manufacturer</label>
+            <select name="Manufacturer" formControlName="Manufacturer" [(ngModel)]="product.Manufacturer" class="form-control">
+        <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="CategoryName">CategoryName</label>
+            <select name="CategoryName" formControlName="CategoryName" class="form-control">
+         <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" formControlName="Description" [(ngModel)]="product.Description" name="Description" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="BasePrice">BasePrice</label>
+            <input type="text" formControlName="BasePrice" name="BasePrice" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="button" value="New" (click)="clear()" class="btn btn-warning">
+            <input type="submit" [disabled]="!frmProduct.valid" value="Save" class="btn btn-success">
+        </div>
+    </form>
+</div>
+<br>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let h of headers">{{h}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products" (click)="getSelectedProduct(p)">
+                <td *ngFor="let h of headers">{{p[h]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
