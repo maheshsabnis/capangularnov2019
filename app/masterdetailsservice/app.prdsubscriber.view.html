@@ -1,0 +1,17 @@
+<h2>List of Products</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>Prd Id</td>
+            <td>Prd Name</td>
+            <th>Cat Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of FilterProducts">
+            <td>{{p.PrdId}}</td>
+            <td>{{p.PrdName}}</td>
+            <td>{{p.CatId}}</td>
+        </tr>
+    </tbody>
+</table>

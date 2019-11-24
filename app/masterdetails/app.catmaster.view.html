@@ -1,0 +1,18 @@
+<h2>List of Categories</h2>
+<div class="contaier">{{message}}</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Cat Id</th>
+            <td>Cat Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of cats" (click)="getSelectedCategory(c)">
+            <td>{{c.CatId}}</td>
+            <td>{{c.CatName}}</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<app-prdchild-component [CatId]="cat.CatId" (notifyParent)="getNotification($event)"></app-prdchild-component>
