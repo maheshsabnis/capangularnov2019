@@ -12,8 +12,8 @@ import { CustomValidator } from './app.custom.validators';
   templateUrl:'./app.product.validation.component.view.html'
 })
 export class ProductValidationComponent implements OnInit {
-  product: Product;
-  private logic: ProductLogic;
+    product: Product;
+    private logic: ProductLogic;
   products: Array<Product>;
   headers: Array<string>;
   categories = Categories;

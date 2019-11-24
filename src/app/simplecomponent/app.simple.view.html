@@ -1,0 +1,21 @@
+<div class="container">
+    <div>{{message}}</div>
+    <br>
+    <input type="button" value="CLick Me" (click)="display()">
+    <br>
+    <input type="text" [value]="message">
+    <br> Two-Way Binding
+    <br>
+    <input type="text" [(ngModel)]="message">
+    <br>
+    <input type="text" [(ngModel)]="message">
+
+    <table class="table table-bordered table-striped">
+        <tr *ngFor="let i of data">
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+        </tr>
+    </table>
+
+
+</div>
